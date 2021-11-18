@@ -9818,6 +9818,7 @@ MonoBehaviour:
   operand2: 0
   mathOperator1: 0
   result: 0
+  sciencePuzzle: {fileID: 0}
   waitTime: 0
   isPuzzleTriggered: 0
   m_tileStepFX: {fileID: 457173693}

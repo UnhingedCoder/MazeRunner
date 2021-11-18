@@ -18,6 +18,7 @@ public class FloorTileController : MonoBehaviour
     public int operand2;
     public MathOperator mathOperator1;
     public int result;
+    public SciencePuzzle sciencePuzzle;
 
     public int waitTime;
     public bool isPuzzleTriggered = false;
@@ -31,6 +32,7 @@ public class FloorTileController : MonoBehaviour
     [SerializeField] private FloorTileManager m_floorTileManager;
     private PlayerMovementController m_playerMovementController;
     private PuzzleManager m_puzzleManager;
+    private SciencePuzzleManager m_SciencePuzzleManager;
     #endregion
 
     #region UNITY_REG
@@ -38,6 +40,7 @@ public class FloorTileController : MonoBehaviour
     {
         m_playerMovementController = FindObjectOfType<PlayerMovementController>();
         m_puzzleManager = FindObjectOfType<PuzzleManager>();
+        m_SciencePuzzleManager = FindObjectOfType<SciencePuzzleManager>();
     }
 
     private void OnValidate()
@@ -62,7 +65,13 @@ public class FloorTileController : MonoBehaviour
             m_floorTileManager.CheckForPuzzleTile();
 
             if (isExit)
-                m_puzzleManager.exitMazeEvent.Invoke();
+            {
+                if (m_puzzleManager != null)
+                    m_puzzleManager.exitMazeEvent.Invoke();
+
+                if (m_SciencePuzzleManager != null)
+                    m_SciencePuzzleManager.exitMazeEvent.Invoke();
+            }
 
         }
     }

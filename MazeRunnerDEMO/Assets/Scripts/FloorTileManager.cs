@@ -7,6 +7,7 @@ public class FloorTileManager : MonoBehaviour
     #region VARIABLE_REG
     public FloorTileController floorTileController;
     private PuzzleManager m_puzzleManager;
+    private SciencePuzzleManager m_SciencePuzzleManager;
 
     [SerializeField]private FloorTileController tile = null;
 
@@ -16,7 +17,8 @@ public class FloorTileManager : MonoBehaviour
     #region UNITY_REG
     private void Awake()
     {
-        m_puzzleManager = FindObjectOfType<PuzzleManager>();    
+        m_puzzleManager = FindObjectOfType<PuzzleManager>();
+        m_SciencePuzzleManager = FindObjectOfType<SciencePuzzleManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -74,7 +76,11 @@ public class FloorTileManager : MonoBehaviour
         if (!tile.isPuzzleSolved)
         {
             Debug.Log("TRIGGER PUZZLE ON" + tile.transform.parent.name +" FROM "+ this.transform.name);
-            m_puzzleManager.triggerPuzzleEvent.Invoke(tile);
+            if(m_puzzleManager != null)
+                m_puzzleManager.triggerPuzzleEvent.Invoke(tile);
+
+            if (m_SciencePuzzleManager != null)
+                m_SciencePuzzleManager.triggerPuzzleEvent.Invoke(tile);
         }
     }
 
@@ -87,7 +93,12 @@ public class FloorTileManager : MonoBehaviour
         if (!tile.isPuzzleSolved)
         {
             Debug.Log("HIDE PUZZLE ON" + tile.transform.parent.name + " FROM " + this.transform.name);
-            m_puzzleManager.hidePuzzleEvent.Invoke();
+            if (m_puzzleManager != null)
+                m_puzzleManager.hidePuzzleEvent.Invoke();
+
+
+            if (m_SciencePuzzleManager != null)
+                m_SciencePuzzleManager.hidePuzzleEvent.Invoke();
         }
         
     }

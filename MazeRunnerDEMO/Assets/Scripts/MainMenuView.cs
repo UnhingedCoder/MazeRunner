@@ -19,7 +19,7 @@ public class MainMenuView : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(OnFirstTileLoad());
+        StartCoroutine(OnFirstLoad());
     }
     #endregion
 
@@ -40,13 +40,17 @@ public class MainMenuView : MonoBehaviour
         m_levelManager.LoadMathLevel();
     }
 
+    public void OnScienceClicked()
+    {
+        m_levelManager.LoadScienceLevel();
+    }
     public void OnBackClicked()
     {
         startMenu.SetActive(true);
         subjectsMenu.SetActive(false);
     }
 
-    IEnumerator OnFirstTileLoad()
+    IEnumerator OnFirstLoad()
     {
         yield return new WaitForSeconds(0.3f);
 

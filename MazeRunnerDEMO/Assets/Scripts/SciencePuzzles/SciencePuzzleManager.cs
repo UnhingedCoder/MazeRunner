@@ -28,6 +28,7 @@ public class SciencePuzzleManager : MonoBehaviour
     public bool isChoiceSlotsFilled = false;
 
     public bool isPuzzleActive = false;
+    public bool isPuzzleSlotFull = false;
 
 
     [SerializeField] private SciencePuzzle selectedPuzzle = null;
@@ -125,6 +126,7 @@ public class SciencePuzzleManager : MonoBehaviour
         m_puzzleTileRef = null;
         m_puzzleDialog.SetActive(false);
         isPuzzleActive = false;
+        isPuzzleSlotFull = false;
         selectedPuzzle = null;
         activePuzzle = null;
         DisplayPuzzle();
@@ -143,6 +145,10 @@ public class SciencePuzzleManager : MonoBehaviour
 
         selectedPuzzle = choice;
 
+
+        if (selectedPuzzle != null)
+            isPuzzleSlotFull = true;
+
         DisplayPuzzle();
     }
 
@@ -152,6 +158,9 @@ public class SciencePuzzleManager : MonoBehaviour
             return;
 
         selectedPuzzle = null;
+
+        if (selectedPuzzle == null)
+            isPuzzleSlotFull = false;
 
         DisplayPuzzle();
     }
@@ -181,7 +190,8 @@ public class SciencePuzzleManager : MonoBehaviour
             isChoiceSlotsFilled = false;
             HidePuzzle();
         }
-
+        else
+            m_goButton.GetComponent<Animator>().SetTrigger("Wrong");
     }
 
 

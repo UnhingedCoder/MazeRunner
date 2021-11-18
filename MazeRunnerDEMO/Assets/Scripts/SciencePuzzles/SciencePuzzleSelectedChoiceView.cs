@@ -35,6 +35,9 @@ public class SciencePuzzleSelectedChoiceView : MonoBehaviour
 
         if (!isChoiceUsed)
         {
+            if (m_puzzleManager.isPuzzleSlotFull)
+                return;
+
             m_puzzleManager.InputOperands(sciencePuzzle);
             isChoiceUsed = true;
         }

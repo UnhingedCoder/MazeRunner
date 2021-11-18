@@ -39,8 +39,12 @@ public class PuzzleSelectedChoiceView : MonoBehaviour
         if (!m_puzzleManager.isPuzzleActive)
             return;
 
+
         if (!isChoiceUsed)
         {
+            if (m_puzzleManager.isPuzzleSlotFull)
+                return;
+
             m_puzzleManager.InputOperands(m_choiceText.text);
             isChoiceUsed = true;
         }

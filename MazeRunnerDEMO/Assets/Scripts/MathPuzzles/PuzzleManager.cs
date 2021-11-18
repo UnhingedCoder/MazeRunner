@@ -42,6 +42,7 @@ public class PuzzleManager : MonoBehaviour
     public bool isChoiceSlotsFilled = false;
 
     public bool isPuzzleActive = false;
+    public bool isPuzzleSlotFull = false;
 
 
     [SerializeField] private int operand1 = -99;
@@ -211,6 +212,7 @@ public class PuzzleManager : MonoBehaviour
         m_puzzleTileRef = null;
         m_puzzleDialog.SetActive(false);
         isPuzzleActive = false;
+        isPuzzleSlotFull = false;
         operand1 = -99;
         operand2 = -99;
         result = -99;
@@ -235,6 +237,9 @@ public class PuzzleManager : MonoBehaviour
         else if(operand2 == -99)
             operand2 = choiceVal;
 
+        if (operand1 > -99 && operand2 > -99)
+            isPuzzleSlotFull = true;
+
         DisplayPuzzle();
     }
 
@@ -248,6 +253,9 @@ public class PuzzleManager : MonoBehaviour
             operand1 = -99;
         else if (operand2 == choiceVal)
             operand2 = -99;
+
+        if (operand1 <= -99 && operand2 < -99)
+            isPuzzleSlotFull = false;
 
         DisplayPuzzle();
     }
@@ -284,6 +292,8 @@ public class PuzzleManager : MonoBehaviour
             PopulateSelectedSlots();
             HidePuzzle();
         }
+        else
+            m_goButton.GetComponent<Animator>().SetTrigger("Wrong");
 
     }
 

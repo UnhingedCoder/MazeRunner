@@ -18,6 +18,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void LoadScienceLevel()
+    {
+        SceneManager.LoadScene(2);
+    }
+
     public void LoadSubjectsLevel()
     {
         SceneManager.LoadScene(0);

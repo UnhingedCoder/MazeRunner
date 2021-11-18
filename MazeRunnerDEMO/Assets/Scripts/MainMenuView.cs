@@ -16,9 +16,10 @@ public class MainMenuView : MonoBehaviour
     {
         m_levelManager = FindObjectOfType<LevelManager>();
     }
-    private void OnEnable()
+
+    private void Start()
     {
-        OnBackClicked();
+        StartCoroutine(OnFirstTileLoad());
     }
     #endregion
 
@@ -43,6 +44,13 @@ public class MainMenuView : MonoBehaviour
     {
         startMenu.SetActive(true);
         subjectsMenu.SetActive(false);
+    }
+
+    IEnumerator OnFirstTileLoad()
+    {
+        yield return new WaitForSeconds(0.3f);
+
+        OnBackClicked();
     }
     #endregion
 }

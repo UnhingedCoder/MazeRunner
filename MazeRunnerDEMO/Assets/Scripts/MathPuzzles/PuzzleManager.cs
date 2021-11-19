@@ -254,8 +254,7 @@ public class PuzzleManager : MonoBehaviour
         else if (operand2 == choiceVal)
             operand2 = -99;
 
-        if (operand1 <= -99 && operand2 < -99)
-            isPuzzleSlotFull = false;
+        isPuzzleSlotFull = false;
 
         DisplayPuzzle();
     }
@@ -316,7 +315,7 @@ public class PuzzleManager : MonoBehaviour
 
     public void OnBackClicked()
     {
-        m_levelManager.LoadSubjectsLevel();
+        m_levelManager.LoadMainMenu();
     }
 }
     #endregion

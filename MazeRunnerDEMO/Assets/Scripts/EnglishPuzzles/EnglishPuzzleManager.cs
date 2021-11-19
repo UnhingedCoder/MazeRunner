@@ -6,12 +6,12 @@ using TMPro;
 using DG.Tweening;
 
 
-public class SciencePuzzleManager : MonoBehaviour
+public class EnglishPuzzleManager : MonoBehaviour
 {
     #region VARIABLE_REG
     [SerializeField] private TextMeshProUGUI operand_1Text;
     
-    [SerializeField] private List<SciencePuzzleSelectedChoiceView> m_selectedPuzzleChoices;
+    [SerializeField] private List<EnglishPuzzleSelectedChoiceView> m_selectedPuzzleChoices;
 
     [SerializeField] private List<int> m_selectedChoices;
 
@@ -23,7 +23,7 @@ public class SciencePuzzleManager : MonoBehaviour
     [SerializeField] private GameObject m_startButton;
     [SerializeField] private GameObject m_goButton;
 
-    [SerializeField] private List<SciencePuzzle> listOfSciencePuzzles = new List<SciencePuzzle>();
+    [SerializeField] private List<EnglishPuzzle> listOfEnglishPuzzles = new List<EnglishPuzzle>();
 
     public bool isChoiceSlotsFilled = false;
 
@@ -31,8 +31,8 @@ public class SciencePuzzleManager : MonoBehaviour
     public bool isPuzzleSlotFull = false;
 
 
-    [SerializeField] private SciencePuzzle selectedPuzzle = null;
-    [SerializeField] private SciencePuzzle activePuzzle = null;
+    [SerializeField] private EnglishPuzzle selectedPuzzle = null;
+    [SerializeField] private EnglishPuzzle activePuzzle = null;
 
     private FloorTileController m_puzzleTileRef;
     private LevelManager m_levelManager;
@@ -73,14 +73,14 @@ public class SciencePuzzleManager : MonoBehaviour
         m_player.transform.DOMoveY(0.5f, 1.3f);
     }
 
-    private SciencePuzzle GetPuzzle()
+    private EnglishPuzzle GetPuzzle()
     {
-        int index = Random.Range(0, listOfSciencePuzzles.Count);
+        int index = Random.Range(0, listOfEnglishPuzzles.Count);
 
-        if (index < listOfSciencePuzzles.Count)
+        if (index < listOfEnglishPuzzles.Count)
         {
-            SciencePuzzle puzzle = listOfSciencePuzzles[index];
-            listOfSciencePuzzles.Remove(puzzle);
+            EnglishPuzzle puzzle = listOfEnglishPuzzles[index];
+            listOfEnglishPuzzles.Remove(puzzle);
             return puzzle;
         }
 
@@ -97,16 +97,15 @@ public class SciencePuzzleManager : MonoBehaviour
 
         if (puzzleTile.isPuzzleAlotted)
         {
-            activePuzzle = puzzleTile.sciencePuzzle;
+            activePuzzle = puzzleTile.englishPuzzle;
             DisplayPuzzle();
             return;
         }
 
 
 
-        SciencePuzzle puzzle = GetPuzzle();
-        puzzleTile.sciencePuzzle = puzzle;
-        puzzleTile.isPuzzleAlotted = true;
+        EnglishPuzzle puzzle = GetPuzzle();
+
         activePuzzle = puzzle;
         DisplayPuzzle();
 
@@ -114,11 +113,11 @@ public class SciencePuzzleManager : MonoBehaviour
 
     private void SetPuzzles()
     {
-        listOfSciencePuzzles.Clear();
+        listOfEnglishPuzzles.Clear();
 
         for (int i = 0; i < m_selectedPuzzleChoices.Count; i++)
         {
-            listOfSciencePuzzles.Add(m_selectedPuzzleChoices[i].sciencePuzzle);
+            listOfEnglishPuzzles.Add(m_selectedPuzzleChoices[i].englishPuzzle);
         }
     }
 
@@ -139,7 +138,7 @@ public class SciencePuzzleManager : MonoBehaviour
     }
 
 
-    public void InputOperands(SciencePuzzle choice)
+    public void InputOperands(EnglishPuzzle choice)
     {
         if (!isPuzzleActive)
             return;
@@ -153,7 +152,7 @@ public class SciencePuzzleManager : MonoBehaviour
         DisplayPuzzle();
     }
 
-    public void RemoveOperands(SciencePuzzle choice)
+    public void RemoveOperands(EnglishPuzzle choice)
     {
         if (!isPuzzleActive)
             return;

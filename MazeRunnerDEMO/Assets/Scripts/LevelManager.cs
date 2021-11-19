@@ -23,7 +23,25 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
+    public void LoadEnglishLevel()
+    {
+        SceneManager.LoadScene(3);
+    }
+
     public void LoadSubjectsLevel()
+    {
+        Scene scene = SceneManager.GetActiveScene();
+        if (scene.buildIndex < 3)
+        {
+            SceneManager.LoadScene(scene.buildIndex + 1);
+        }
+        else
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    public void LoadMainMenu()
     {
         SceneManager.LoadScene(0);
     }

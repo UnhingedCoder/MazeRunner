@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28061db43c0d255498c1d651424334f2, type: 3}
-  m_Name: Venus
+  m_Script: {fileID: 11500000, guid: 85d05a54baa8aa44e9dfa53d9a1907b4, type: 3}
+  m_Name: Therefore
   m_EditorClassIdentifier: 
-  PuzzleName: Venus
-  Description: 'This planet is of similar size as Earth and the hottest '
-  Icon: {fileID: 1070440613354207617, guid: 289aaa365f1597244abee451150ca552, type: 3}
+  PuzzleName: therefore
+  Description: Mary arrived late at the station, _____ she missed the train.

@@ -44,6 +44,11 @@ public class MainMenuView : MonoBehaviour
     {
         m_levelManager.LoadScienceLevel();
     }
+
+    public void OnEnglishClicked()
+    {
+        m_levelManager.LoadEnglishLevel();
+    }
     public void OnBackClicked()
     {
         startMenu.SetActive(true);

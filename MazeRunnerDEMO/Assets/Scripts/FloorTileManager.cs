@@ -8,6 +8,7 @@ public class FloorTileManager : MonoBehaviour
     public FloorTileController floorTileController;
     private PuzzleManager m_puzzleManager;
     private SciencePuzzleManager m_SciencePuzzleManager;
+    private EnglishPuzzleManager m_EnglishPuzzleManager;
 
     [SerializeField]private FloorTileController tile = null;
 
@@ -19,6 +20,7 @@ public class FloorTileManager : MonoBehaviour
     {
         m_puzzleManager = FindObjectOfType<PuzzleManager>();
         m_SciencePuzzleManager = FindObjectOfType<SciencePuzzleManager>();
+        m_EnglishPuzzleManager = FindObjectOfType<EnglishPuzzleManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -81,6 +83,10 @@ public class FloorTileManager : MonoBehaviour
 
             if (m_SciencePuzzleManager != null)
                 m_SciencePuzzleManager.triggerPuzzleEvent.Invoke(tile);
+
+
+            if (m_EnglishPuzzleManager != null)
+                m_EnglishPuzzleManager.triggerPuzzleEvent.Invoke(tile);
         }
     }
 
@@ -99,6 +105,9 @@ public class FloorTileManager : MonoBehaviour
 
             if (m_SciencePuzzleManager != null)
                 m_SciencePuzzleManager.hidePuzzleEvent.Invoke();
+
+            if (m_EnglishPuzzleManager != null)
+                m_EnglishPuzzleManager.hidePuzzleEvent.Invoke();
         }
         
     }

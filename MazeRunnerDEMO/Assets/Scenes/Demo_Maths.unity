@@ -8204,7 +8204,7 @@ MonoBehaviour:
   operand_2Text: {fileID: 1255426244}
   operator_1Text: {fileID: 1797725051}
   resultText: {fileID: 211504394}
-  m_numberRange: 010000000200000003000000040000000500000006000000070000000800000009000000
+  m_numberRange: fbfffffffcfffffffdfffffffeffffffffffffff01000000020000000300000004000000
   m_puzzleChoices:
   - {fileID: 1659843375}
   - {fileID: 102040760}
@@ -8232,6 +8232,7 @@ MonoBehaviour:
   listOfSums: 
   isChoiceSlotsFilled: 0
   isPuzzleActive: 0
+  isPuzzleSlotFull: 0
   operand1: -99
   operand2: -99
   mathOperator1: 0
